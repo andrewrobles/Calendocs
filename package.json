@@ -1,6 +1,6 @@
 {
   "name": "calendar-docs",
-  "description": "A calendar for your documents.",
+  "description": "A calendar for writing documents.",
   "scripts": {
     "docs": "docsify serve . -p 3001"
   },

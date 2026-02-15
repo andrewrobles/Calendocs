@@ -10,7 +10,6 @@ function createMonth(options = {}) {
   const daysInMonth = lastDay.getDate()
 
   const monthName = firstDay.toLocaleString("en-US", { month: "long" })
-  const title = `## ${monthName} ${year}`
 
   const headersSunday = ["S", "M", "T", "W", "T", "F", "S"]
   const headersMonday = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]

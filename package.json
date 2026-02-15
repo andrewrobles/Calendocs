@@ -4,7 +4,7 @@
   "description": "A calendar for writing documents.",
   "scripts": {
     "docs": "docsify serve . -p 3001",
-    "month:create": "node create-month.js",
+    "month:new": "node create-month.js",
     "test": "jest"
 
   },

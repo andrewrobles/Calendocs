@@ -1,2 +1,4 @@
-|S|M|T|W|T|F|S|
-|-|-|-|-|-|-|-|
+Create a Markdown calendar of the current month:
+```
+npm run month:create
+```

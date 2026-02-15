@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "A calendar for writing documents.",
   "scripts": {
-    "docs": "docsify serve . -p 3001"
+    "docs": "docsify serve . -p 3001",
+    "month:create": "node create-month.js",
+    "test": "jest"
+
   },
-  "author": "Andrew Robles"
+  "author": "Andrew Robles",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
 }

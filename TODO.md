@@ -4,5 +4,6 @@ Create day
 Delete day
 
 Create month
+- Document implementation
 - Align vertical bar characters 
 - Edit file

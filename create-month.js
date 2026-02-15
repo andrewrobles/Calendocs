@@ -9,8 +9,6 @@ function createMonth(options = {}) {
   const lastDay = new Date(year, monthIndex + 1, 0)
   const daysInMonth = lastDay.getDate()
 
-  const monthName = firstDay.toLocaleString("en-US", { month: "long" })
-
   const headersSunday = ["S", "M", "T", "W", "T", "F", "S"]
   const headersMonday = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
   const headers = weekStartsOn === 0 ? headersSunday : headersMonday

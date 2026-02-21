@@ -5,6 +5,7 @@
   "scripts": {
     "docs": "docsify serve . -p 3001",
     "month:new": "node create-month.js",
+    "day:new": "node create-day.js",
     "test": "jest"
 
   },

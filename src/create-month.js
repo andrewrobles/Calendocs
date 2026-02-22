@@ -40,11 +40,8 @@ function createMonth(options = {}) {
     `| ${r.map(x => (x === "" ? " " : x)).join(" | ")} |`
   )
 
-  return [headerRow, separatorRow, ...bodyRows].join("\n")
+  const output = [headerRow, separatorRow, ...bodyRows].join("\n")
+  return output
 }
-
-const month = createMonth()
-console.log(month)
-
 
 module.exports = { createMonth }

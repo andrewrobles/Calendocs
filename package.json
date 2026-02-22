@@ -2,15 +2,18 @@
   "name": "calendocs",
   "version": "1.0.0",
   "description": "A calendar for writing documents.",
-  "scripts": {
-    "docs": "docsify serve . -p 3001",
-    "month:new": "node create-month.js",
-    "day:new": "node create-day.js",
-    "test": "jest"
-
-  },
   "author": "Andrew Robles",
+  "files": ["bin", "src"],
+  "bin": {
+    "docs": "bin/cli.js"
+  },
   "devDependencies": {
     "jest": "^30.2.0"
+  },
+  "scripts": {
+    "docs": "docsify serve . -p 3001",
+    "day": "node bin/cli.js day",
+    "month": "node bin/cli.js month",
+    "test": "jest"
   }
 }

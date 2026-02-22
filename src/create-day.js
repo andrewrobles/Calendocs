@@ -44,6 +44,8 @@ function createDay() {
 
   fs.writeFileSync(filepath, fileContent)
 
+  console.log(bufferContent)
+
   // This is what actually copies it to your clipboard.
   copyToClipboard(bufferContent)
 
@@ -53,12 +55,6 @@ function createDay() {
     bufferContent,
     fileContent
   }
-}
-
-// Only run when executed directly: `node create-day.js`
-// (Jest imports this module, so we must not run side effects on import.)
-if (require.main === module) {
-  createDay()
 }
 
 module.exports = { createDay }

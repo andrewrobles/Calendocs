@@ -1,9 +1,0 @@
-Create day
-- Parse month   
-
-Delete day
-
-Create month
-- Document implementation
-- Align vertical bar characters 
-- Edit file

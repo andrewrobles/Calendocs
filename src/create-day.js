@@ -37,7 +37,7 @@ function createDay() {
   const day = String(today.getDate())
   const leadingZeroDay = String(today.getDate()).padStart(2, '0')
   const filename = `${leadingZeroMonth}-${leadingZeroDay}.md`
-  const filepath = path.join(__dirname, filename)
+  const filepath = path.join(process.cwd(), filename)
 
   const fileContent = `[${month}/${day}](./README.md)\n`
   const bufferContent = `[${today.getDate()}](./${leadingZeroMonth}-${leadingZeroDay}.md)`

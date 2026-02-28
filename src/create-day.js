@@ -40,19 +40,19 @@ function createDay() {
   const filepath = path.join(process.cwd(), filename)
 
   const fileContent = `[${month}/${day}](./README.md)\n`
-  const bufferContent = `[${today.getDate()}](./${leadingZeroMonth}-${leadingZeroDay}.md)`
+  const docLink = `[${today.getDate()}](./${leadingZeroMonth}-${leadingZeroDay}.md)`
 
   fs.writeFileSync(filepath, fileContent)
+  const readmeContent = fs.readFileSync(path.join(process.cwd(), 'README.md'), 'utf8')
+  const updatedContent = readmeContent.replace(`${today.getDate()}`, docLink)
+  fs.writeFileSync(path.join(process.cwd(), 'README.md'), updatedContent)
 
-  console.log(bufferContent)
-
-  // This is what actually copies it to your clipboard.
-  copyToClipboard(bufferContent)
+  console.log(docLink)
 
   return {
     filename,
     filepath,
-    bufferContent,
+    docLink,
     fileContent
   }
 }

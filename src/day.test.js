@@ -1,5 +1,5 @@
 const fs = require('fs')
-const { createDay } = require('./create-day')
+const { createDay } = require('./day')
 
 describe('createDay', () => {
     beforeEach(() => {

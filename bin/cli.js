@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const { createDay } = require('../src/create-day')
-const { createMonth } = require('../src/create-month')
+const { createDay } = require('../src/day')
+const { createMonth } = require('../src/month')
 
 function printHelp() {
   console.log(`

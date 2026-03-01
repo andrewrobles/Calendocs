@@ -57,4 +57,20 @@ function createDay() {
   }
 }
 
-module.exports = { createDay }
+const deleteDay = () => {
+  // delete file corresponding to today
+  const today = new Date()
+  const leadingZeroMonth = String(today.getMonth() + 1).padStart(2, '0')
+  const leadingZeroDay = String(today.getDate()).padStart(2, '0')
+  const filename = `${leadingZeroMonth}-${leadingZeroDay}.md`
+  const filepath = path.join(process.cwd(), filename)
+  fs.unlinkSync(filepath)
+
+  // delete link from day in calendar
+  const docLink = `[${today.getDate()}](./${leadingZeroMonth}-${leadingZeroDay}.md)`
+  const readmeContent = fs.readFileSync(path.join(process.cwd(), 'README.md'), 'utf8')
+  const updatedContent = readmeContent.replace(docLink, `${today.getDate()}`)
+  fs.writeFileSync(path.join(process.cwd(), 'README.md'), updatedContent)
+}
+
+module.exports = { createDay, deleteDay }

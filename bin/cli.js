@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { createDay } = require('../src/day')
+const { createDay, deleteDay } = require('../src/day')
 const { createMonth } = require('../src/month')
 
 function printHelp() {
@@ -14,6 +14,7 @@ These are common ways to start various kinds of documents:
 async function main() {
   const args = process.argv.slice(2)
   const cmd = args[0]
+  const subCmd = args[1]
 
   if (!cmd || cmd === '-h' || cmd === '--help') {
     printHelp()
@@ -22,8 +23,14 @@ async function main() {
 
   try {
     if (cmd === 'day') {
-      const result = createDay()
-      if (result?.message) console.log(result.message)
+      if (subCmd === '-d') {
+        // Call delete function
+        const result = deleteDay()
+        // if (result?.message) console.log(result.message)
+      } else {
+        const result = createDay()
+        if (result?.message) console.log(result.message)
+      }
       process.exit(0)
     }
 

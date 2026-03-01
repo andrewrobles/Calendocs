@@ -1,3 +1,13 @@
+const fs = require('fs')
+const path = require('path')
+
+const write = (string) => {
+  const filename = 'README.md'
+  const filepath = path.join(process.cwd(), filename)
+  const existingContent = fs.existsSync(filepath) ? fs.readFileSync(filepath, 'utf8') : ''
+  fs.writeFileSync(filepath, string + '\n\n' + existingContent)
+}
+
 function createMonth(options = {}) {
   const weekStartsOn = options.weekStartsOn ?? 0 // 0 = Sunday, 1 = Monday
 
@@ -41,7 +51,10 @@ function createMonth(options = {}) {
   )
 
   const output = [headerRow, separatorRow, ...bodyRows].join("\n")
+  write(output)
   return output
 }
+
+
 
 module.exports = { createMonth }

@@ -8,12 +8,13 @@ const write = (string) => {
   fs.writeFileSync(filepath, string + '\n\n' + existingContent)
 }
 
-function createMonth(options = {}) {
-  const weekStartsOn = options.weekStartsOn ?? 0 // 0 = Sunday, 1 = Monday
+function createMonth(index=0) {
+  // const weekStartsOn = options.weekStartsOn ?? 0 
+  const weekStartsOn = 0 // 0 = Sunday, 1 = Monday
 
   const now = new Date()
   const year = now.getFullYear()
-  const monthIndex = now.getMonth() // 0-based
+  const monthIndex = now.getMonth() + index
 
   const firstDay = new Date(year, monthIndex, 1)
   const lastDay = new Date(year, monthIndex + 1, 0)

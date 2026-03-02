@@ -1,3 +1,1 @@
-const day = require('./day')
-
-module.exports = day
+module.exports = require('./day')

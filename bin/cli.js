@@ -15,6 +15,7 @@ async function main() {
   const args = process.argv.slice(2)
   const cmd = args[0]
   const subCmd = args[1]
+  const subValue = args[2]
 
   if (!cmd || cmd === '-h' || cmd === '--help') {
     printHelp()
@@ -24,9 +25,7 @@ async function main() {
   try {
     if (cmd === 'day') {
       if (subCmd === '-d') {
-        // Call delete function
-        const result = deleteDay()
-        // if (result?.message) console.log(result.message)
+        deleteDay()
       } else {
         const result = createDay()
         if (result?.message) console.log(result.message)
@@ -35,7 +34,8 @@ async function main() {
     }
 
     if (cmd === 'month') {
-      const md = createMonth()
+      const offset = subCmd === '-i' ? parseInt(subValue, 10) : 0
+      const md = createMonth(offset)
       if (md) console.log(md)
       process.exit(0)
     }

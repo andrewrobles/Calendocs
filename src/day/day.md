@@ -1,6 +1,6 @@
 # day
 
-delete
+### delete
 - file corresponding to today
 - link from day in calendar
 ```bash

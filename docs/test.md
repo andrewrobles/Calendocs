@@ -1,4 +1,9 @@
 Run a single test file
 ```bash
-npx jest path/to/file.test.js
+npx jest <test-file>
+```
+
+Run a single test
+```bash
+npx jest <test-file> -t "<test name>"
 ```

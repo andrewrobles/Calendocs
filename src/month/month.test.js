@@ -1,4 +1,4 @@
-const { createMonth } = require("./create-month")
+const { createMonth } = require("./month")
 
 describe("createMonth", () => {
   beforeEach(() => {

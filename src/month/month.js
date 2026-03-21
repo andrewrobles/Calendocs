@@ -1,16 +1,25 @@
 const fs = require('fs')
 const path = require('path')
 
-const write = (string) => {
+const write = (string, testReadme = null) => {
+  const newContent = string + '\n\n'
+
+  if (testReadme !== null) {
+    return newContent + testReadme
+  }
+
   const filename = 'README.md'
   const filepath = path.join(process.cwd(), filename)
-  const existingContent = fs.existsSync(filepath) ? fs.readFileSync(filepath, 'utf8') : ''
-  fs.writeFileSync(filepath, string + '\n\n' + existingContent)
+  const existingContent = fs.existsSync(filepath)
+    ? fs.readFileSync(filepath, 'utf8')
+    : ''
+
+  fs.writeFileSync(filepath, newContent + existingContent)
+  return newContent + existingContent
 }
 
-function createMonth(index=0) {
-  // const weekStartsOn = options.weekStartsOn ?? 0 
-  const weekStartsOn = 0 // 0 = Sunday, 1 = Monday
+function createMonth(index = 0, testReadme = null) {
+  const weekStartsOn = 0
 
   const now = new Date()
   const year = now.getFullYear()
@@ -20,18 +29,18 @@ function createMonth(index=0) {
   const lastDay = new Date(year, monthIndex + 1, 0)
   const daysInMonth = lastDay.getDate()
 
-  const headersSunday = ["S", "M", "T", "W", "T", "F", "S"]
-  const headersMonday = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+  const headersSunday = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+  const headersMonday = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
   const headers = weekStartsOn === 0 ? headersSunday : headersMonday
 
-  const headerRow = `| ${headers.join(" | ")} |`
-  const separatorRow = `|${headers.map(() => "---").join("|")}|`
+  const headerRow = `| ${headers.join(' | ')} |`
+  const separatorRow = `|${headers.map(() => '---').join('|')}|`
 
   const jsDow = firstDay.getDay()
   const offset = weekStartsOn === 0 ? jsDow : (jsDow + 6) % 7
 
   const rows = []
-  let row = Array(7).fill("")
+  let row = Array(7).fill('')
   let col = offset
 
   for (let day = 1; day <= daysInMonth; day++) {
@@ -40,22 +49,26 @@ function createMonth(index=0) {
 
     if (col === 7) {
       rows.push(row)
-      row = Array(7).fill("")
+      row = Array(7).fill('')
       col = 0
     }
   }
 
-  if (row.some(cell => cell !== "")) rows.push(row)
+  if (row.some(cell => cell !== '')) rows.push(row)
 
   const bodyRows = rows.map(r =>
-    `| ${r.map(x => (x === "" ? " " : x)).join(" | ")} |`
+    `| ${r.map(x => (x === '' ? ' ' : x)).join(' | ')} |`
   )
 
-  const output = [headerRow, separatorRow, ...bodyRows].join("\n")
+  const output = [headerRow, separatorRow, ...bodyRows].join('\n')
+
+  if (testReadme !== null) {
+    write(output, testReadme)
+    return output
+  }
+
   write(output)
   return output
 }
-
-
 
 module.exports = { createMonth }

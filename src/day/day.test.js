@@ -1,6 +1,8 @@
 const fs = require('fs')
 const { createDay } = require('./day')
 
+describe('day test 1', () => {
+
 let inputCalendar = `
 | S | M | T | W | T | F | S |
 |---|---|---|---|---|---|---|
@@ -19,7 +21,6 @@ let expectedCalendar = `
 | 22 | 23 | 24 | 25 | 26 | 27 | 28 |
 | 29 | 30 | 31 |   |   |   |   |
 `
-describe('day test 1', () => {
     beforeEach(() => {
         jest.useFakeTimers()
     })
@@ -34,28 +35,10 @@ describe('day test 1', () => {
         expect(actual.calendar).toEqual(expectedCalendar)
     })
 
-    // test('removes leading zero', () => {
-    //     jest.setSystemTime(new Date("2026-02-09T12:00:00"))
-    //     const actual = createDay()
-    //     const expectedBufferContent = '[9](./02-09.md)'
-    //     expect(actual.bufferContent).toEqual(expectedBufferContent)
-    // })
-    
-    // test('formats file header date', () => {
-    //     jest.setSystemTime(new Date("2026-02-09T12:00:00"))
-    //     const actual = createDay()
-    //     const expectedBufferContent = '[9](./02-09.md)'
-    //     expect(actual.bufferContent).toEqual(expectedBufferContent)
-    // })
-    
-    // test('formats file header date', () => {
-    //     jest.setSystemTime(new Date("2026-02-09T12:00:00"))
-    //     const actual = createDay()
-    //     const expectedBufferContent = '[2/9](./README.md)\n'
-    //     expect(actual.fileContent).toEqual(expectedBufferContent)
-    // })
 })
 
+
+describe('day test 2', () => {
 
 inputCalendar = `
 | S | M | T | W | T | F | S |
@@ -71,7 +54,7 @@ expectedCalendar = `
 | 22 | 23 | 24 | 25 | 26 | 27 | 28 |
 | 1 | 2 | 3 | 4 | 5 | [6](./03-06.md) | 7 |
 `
-describe('day test 2', () => {
+
     beforeEach(() => {
         jest.useFakeTimers()
     })

@@ -30,7 +30,7 @@ function copyToClipboard(text) {
   throw new Error('No clipboard utility found. Install xclip or xsel (Linux), or run on macOS/Windows.')
 }
 
-function createDay() {
+function createDay(testCalendar = null) {
   const today = new Date()
   const month = String(today.getMonth() + 1)
   const leadingZeroMonth = String(today.getMonth() + 1).padStart(2, '0')
@@ -42,18 +42,24 @@ function createDay() {
   const fileContent = `[${month}/${day}](./README.md)\n`
   const docLink = `[${today.getDate()}](./${leadingZeroMonth}-${leadingZeroDay}.md)`
 
-  fs.writeFileSync(filepath, fileContent)
-  const readmeContent = fs.readFileSync(path.join(process.cwd(), 'README.md'), 'utf8')
-  const updatedContent = readmeContent.replace(`${today.getDate()}`, docLink)
-  fs.writeFileSync(path.join(process.cwd(), 'README.md'), updatedContent)
+  const pattern = new RegExp(`(\\|\\s*)${today.getDate()}(\\s*\\|)`)
 
-  console.log(docLink)
+  let calendar
+  if (!testCalendar) {
+    fs.writeFileSync(filepath, fileContent)
+    const readmeContent = fs.readFileSync(path.join(process.cwd(), 'README.md'), 'utf8')
+    calendar = readmeContent.replace(pattern, `$1${docLink}$2`)
+    fs.writeFileSync(path.join(process.cwd(), 'README.md'), calendar)
+  } else {
+    calendar = testCalendar.replace(pattern, `$1${docLink}$2`)
+  }
 
   return {
     filename,
     filepath,
     docLink,
-    fileContent
+    fileContent,
+    calendar
   }
 }
 

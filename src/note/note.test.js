@@ -9,10 +9,10 @@ let testInputDay = `
 let testOutputDayExpected = `
 [1/1](./README.md)
 
-- [Hello, World!](./Hello,%20World!)
+- [Hello, World!](./01-01/Hello,%20World!.md)
 `
 const testOutputNoteExpected = `
-[Hello, World!](./01-01.md)
+[Hello, World!](../01-01.md)
 `
     beforeEach(() => {
         jest.useFakeTimers()

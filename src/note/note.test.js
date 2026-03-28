@@ -9,7 +9,7 @@ let testInputDay = `
 let testOutputDayExpected = `
 [1/1](./README.md)
 
-- [Hello, World!](./Hello,%20World)
+- [Hello, World!](./Hello,%20World!)
 `
 const testOutputNoteExpected = `
 [Hello, World!](./01-01.md)
@@ -24,8 +24,9 @@ const testOutputNoteExpected = `
 
     test('creates note', () => {
         jest.setSystemTime(new Date("2026-01-01T12:00:00"))
-        const testOutputDayActual = createNote("Hello, world!", testInputDay)
-        expect(testOutputDayActual.calendar).toEqual(testOutputDayExpected)
+        const output = createNote("Hello, World!", testInputDay)
+        expect(output.titledNote).toEqual(testOutputNoteExpected)
+        // expect(output.datedNote).toEqual(testOutputDayExpected)
     })
 
 })

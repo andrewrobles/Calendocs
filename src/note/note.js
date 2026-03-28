@@ -30,7 +30,7 @@ function createNote(title, testInputDay = null) {
       fs.writeFileSync(path.join(folderPath, `${title}.md`), titledNote)
     }
 
-    const datedLink = `- [${title}](./${foldername}/${slug}.md)\n`
+    const datedLink = `- [${title}](./${foldername}/${slug}.md)`
 
     if (fs.existsSync(datedNotePath)) {
       // TODO: Handle both cases when there is a new line at the end of the file or not

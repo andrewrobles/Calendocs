@@ -2,13 +2,14 @@
 
 const { createDay, deleteDay } = require('../src/day')
 const { createMonth } = require('../src/month')
+const { createNote } = require('../src/note')
 
 function printHelp() {
-  // TODO: Update print help command output
   console.log(`
 These are common ways to start various kinds of documents:
-    docs month    a calendar of the current month
-    docs day      a blank document of the current day
+    notes month          a calendar of the current month
+    notes day            a blank document of the current day
+    notes new "<title>"  create a titled note for today
 `)
 }
 
@@ -25,8 +26,6 @@ async function main() {
 
   try {
     if (cmd === 'day') {
-      // TODO: Run integration test for delete day
-      //       If integration test passes, update user manual 
       if (subCmd === '-d') {
         deleteDay()
       } else {
@@ -40,6 +39,21 @@ async function main() {
       const offset = subCmd === '-i' ? parseInt(subValue, 10) : 0
       const md = createMonth(offset)
       if (md) console.log(md)
+      process.exit(0)
+    }
+
+    // ---- NEW COMMAND ----
+    if (cmd === 'new') {
+      const title = args.slice(1).join(' ').trim()
+
+      if (!title) {
+        console.error('Error: title is required\n')
+        console.log('Usage: notes new "<title>"')
+        process.exit(1)
+      }
+
+      createNote(title)
+      console.log(`Created note: "${title}"`)
       process.exit(0)
     }
 

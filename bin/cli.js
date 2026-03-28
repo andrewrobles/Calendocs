@@ -4,6 +4,7 @@ const { createDay, deleteDay } = require('../src/day')
 const { createMonth } = require('../src/month')
 
 function printHelp() {
+  // TODO: Update print help command output
   console.log(`
 These are common ways to start various kinds of documents:
     docs month    a calendar of the current month
@@ -24,6 +25,8 @@ async function main() {
 
   try {
     if (cmd === 'day') {
+      // TODO: Run integration test for delete day
+      //       If integration test passes, update user manual 
       if (subCmd === '-d') {
         deleteDay()
       } else {

@@ -26,7 +26,7 @@ const testOutputNoteExpected = `
         jest.setSystemTime(new Date("2026-01-01T12:00:00"))
         const output = createNote("Hello, World!", testInputDay)
         expect(output.titledNote).toEqual(testOutputNoteExpected)
-        // expect(output.datedNote).toEqual(testOutputDayExpected)
+        expect(output.datedNote).toEqual(testOutputDayExpected)
     })
 
 })

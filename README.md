@@ -1,31 +1,14 @@
-# CLI
+# Note
 
-## Setup
+### Dated note
 
-Install as a command
-```
-npm link
-```
-
-Uninstall as a command
-```
-npm link
-```
-
-## Testing
-
-Run all tests
-
+Create a dated note and link it to the calendar
 ```bash
-npm run test
+note new day
 ```
+### Titled note
 
-Run a single test file
+Create a titled note and link it to today
 ```bash
-npx jest <test-file>
-```
-
-Run a single test
-```bash
-npx jest <test-file> -t "<test name>"
+note new "<title>"
 ```

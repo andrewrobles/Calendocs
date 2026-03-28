@@ -7,9 +7,9 @@ const { createNote } = require('../src/note')
 function printHelp() {
   console.log(`
 These are common ways to start various kinds of documents:
-    notes month          a calendar of the current month
-    notes day            a blank document of the current day
-    notes new "<title>"  create a titled note for today
+    note month          a calendar of the current month
+    note today          a blank document of the current day
+    note "<title>"      create a titled note for today
 `)
 }
 
@@ -25,7 +25,7 @@ async function main() {
   }
 
   try {
-    if (cmd === 'day') {
+    if (cmd === 'today') {
       if (subCmd === '-d') {
         deleteDay()
       } else {
@@ -42,24 +42,19 @@ async function main() {
       process.exit(0)
     }
 
-    // ---- NEW COMMAND ----
-    if (cmd === 'new') {
-      const title = args.slice(1).join(' ').trim()
+    // ---- DEFAULT: CREATE NOTE ----
+    const title = args.join(' ').trim()
 
-      if (!title) {
-        console.error('Error: title is required\n')
-        console.log('Usage: notes new "<title>"')
-        process.exit(1)
-      }
-
-      createNote(title)
-      console.log(`Created note: "${title}"`)
-      process.exit(0)
+    if (!title) {
+      console.error('Error: title is required\n')
+      console.log('Usage: note "<title>"')
+      process.exit(1)
     }
 
-    console.error(`Unknown command: ${cmd}`)
-    printHelp()
-    process.exit(1)
+    createNote(title)
+    console.log(`Created note: "${title}"`)
+    process.exit(0)
+
   } catch (err) {
     console.error(err?.stack || err)
     process.exit(1)

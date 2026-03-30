@@ -7,9 +7,9 @@ const { createNote } = require('../src/note')
 function printHelp() {
   console.log(`
 These are common ways to start various kinds of documents:
-    note month          a calendar of the current month
-    note today          a blank document of the current day
-    note "<title>"      create a titled note for today
+    notes month          a calendar of the current month
+    notes today          a blank document of the current day
+    notes "<title>"      create a titled note for today
 `)
 }
 
@@ -47,7 +47,7 @@ async function main() {
 
     if (!title) {
       console.error('Error: title is required\n')
-      console.log('Usage: note "<title>"')
+      console.log('Usage: notes "<title>"')
       process.exit(1)
     }
 

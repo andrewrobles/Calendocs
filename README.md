@@ -5,11 +5,11 @@
 Create a dated note and link it to the calendar
 
 ```bash
-note today
+notes today
 ```
 ### Titled note
 
 Create a titled note and link it to today
 ```bash
-note "<title>"
+notes "<title>"
 ```

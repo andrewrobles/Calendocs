@@ -1,11 +1,14 @@
 {
-  "name": "note",
+  "name": "notes",
   "version": "1.0.0",
   "description": "Capture thoughts or detailed notes.",
   "author": "Andrew Robles",
-  "files": ["bin", "src"],
+  "files": [
+    "bin",
+    "src"
+  ],
   "bin": {
-    "note": "bin/cli.js"
+    "notes": "bin/cli.js"
   },
   "devDependencies": {
     "jest": "^30.2.0"

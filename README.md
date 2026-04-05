@@ -1,5 +1,3 @@
-# Notes
-
 ### Dated note
 
 Create a dated note and link it to the calendar

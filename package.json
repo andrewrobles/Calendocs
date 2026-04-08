@@ -1,14 +1,11 @@
 {
-  "name": "think",
-  "version": "1.0.0",
   "description": "Capture thoughts or detailed notes.",
-  "author": "Andrew Robles",
   "files": [
     "bin",
     "src"
   ],
   "bin": {
-    "think": "bin/cli.js"
+    "note": "bin/cli.js"
   },
   "devDependencies": {
     "jest": "^30.2.0"

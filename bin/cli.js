@@ -6,9 +6,9 @@ const { createNote } = require('../src/note')
 
 function printHelp() {
   console.log(`
-These are common ways to start various kinds of documents:
-    note month          a calendar of the current month
-    note "<title>"      create a titled note for today
+These are common commands used in various situations:
+    note month          Create calendar of the current month
+    note "<title>"      Create a new note
 `)
 }
 

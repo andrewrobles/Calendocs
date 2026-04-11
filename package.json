@@ -1,7 +1,6 @@
 {
   "name": "notes",
   "version": "1.0.0",
-  "description": "Capture thoughts or detailed notes.",
   "author": "Andrew Robles",
   "files": [
     "bin",

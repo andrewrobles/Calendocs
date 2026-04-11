@@ -17,6 +17,7 @@
     "docs": "docsify serve . -p 3001",
     "day": "node bin/cli.js day",
     "month": "node bin/cli.js month",
-    "test": "jest"
+    "test": "jest",
+    "stash": "git add -A && git stash"
   }
 }

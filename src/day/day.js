@@ -46,7 +46,11 @@ function createDay(testCalendar = null) {
 
   let calendar
   if (!testCalendar) {
-    fs.writeFileSync(filepath, fileContent)
+    // If dated note does not already exist
+    if (!fs.existsSync(filepath)) {
+      // Create a new dated note
+      fs.writeFileSync(filepath, fileContent)
+    }
     const readmeContent = fs.readFileSync(path.join(process.cwd(), 'README.md'), 'utf8')
     calendar = readmeContent.replace(pattern, `$1${docLink}$2`)
     fs.writeFileSync(path.join(process.cwd(), 'README.md'), calendar)

@@ -1,7 +1,6 @@
 {
-  "name": "wunderlist",
+  "name": "notes",
   "version": "1.0.0",
-  "description": "Capture thoughts or detailed notes.",
   "author": "Andrew Robles",
   "files": [
     "bin",
@@ -17,6 +16,7 @@
     "docs": "docsify serve . -p 3001",
     "day": "node bin/cli.js day",
     "month": "node bin/cli.js month",
-    "test": "jest"
+    "test": "jest",
+    "stash": "git add -A && git stash"
   }
 }

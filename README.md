@@ -1,13 +1,34 @@
-### Dated note
+# Notes
 
-Create a dated note and link it to the calendar
+Capture thoughts or detailed notes.
 
-```bash
-note today
+# Setup
+
+Install as a command
 ```
-### Titled note
+npm link
+```
 
-Create a titled note and link it to today
+Uninstall as a command
+```
+npm link
+```
+
+# Testing
+
+Run all tests
+
 ```bash
-note "<title>"
+npm run test
+```
+
+Run a single test file
+```bash
+cd /path/to/file
+npx jest <test-file>
+```
+
+Run a single test
+```bash
+npx jest <test-file> -t "<test name>"
 ```

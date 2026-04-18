@@ -27,6 +27,9 @@ async function main() {
     if (cmd === 'today') {
       if (subCmd === '-d') {
         deleteDay()
+      } else {
+        const result = createDay()
+        if (result?.message) console.log(result.message)
       }
       process.exit(0)
     }

@@ -24,6 +24,11 @@ function createMonth(index = 0, testReadme = null) {
   const now = new Date()
   const year = now.getFullYear()
   const monthIndex = now.getMonth() + index
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+    'September', 'October', 'November', 'December'
+  ]
+  const monthName = monthNames[monthIndex]
 
   const firstDay = new Date(year, monthIndex, 1)
   const lastDay = new Date(year, monthIndex + 1, 0)
@@ -68,7 +73,7 @@ function createMonth(index = 0, testReadme = null) {
   }
 
   write(output)
-  return output
+  return monthName
 }
 
 module.exports = { createMonth }

@@ -36,8 +36,8 @@ async function main() {
 
     if (cmd === 'month') {
       const offset = subCmd === '-i' ? parseInt(subValue, 10) : 0
-      const md = createMonth(offset)
-      if (md) console.log(md)
+      const monthName = createMonth(offset)
+      console.log(`Created month: "${monthName}"`)
       process.exit(0)
     }
 

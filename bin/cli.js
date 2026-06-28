@@ -24,6 +24,13 @@ async function main() {
   }
 
   try {
+    if (cmd === "rename") {
+      const nameBefore = args[1]
+      const nameAfter = args[2]
+      console.log(`Renamed note: ${nameAfter}`)
+      process.exit(0)
+    }
+
     if (cmd === 'today') {
       if (subCmd === '-d') {
         deleteDay()

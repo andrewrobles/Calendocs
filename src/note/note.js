@@ -44,4 +44,33 @@ function createNote(title, testInputDay = null) {
   }
 }
 
-module.exports = { createNote }
+function renameNote(nameBefore, nameAfter) {
+  const cwd = process.cwd()
+  const slugBefore = nameBefore.replace(/ /g, '%20')
+  const slugAfter = nameAfter.replace(/ /g, '%20')
+
+  const today = new Date()
+  const leadingZeroMonth = String(today.getMonth() + 1).padStart(2, '0')
+  const leadingZeroDay = String(today.getDate()).padStart(2, '0')
+  const foldername = `${leadingZeroMonth}-${leadingZeroDay}`
+  const filename = `${leadingZeroMonth}-${leadingZeroDay}.md`
+
+  const folderPath = path.join(cwd, foldername)
+  const oldNotePath = path.join(folderPath, `${nameBefore}.md`)
+  const newNotePath = path.join(folderPath, `${nameAfter}.md`)
+  const datedNotePath = path.join(cwd, filename)
+
+  if (fs.existsSync(oldNotePath)) {
+    fs.renameSync(oldNotePath, newNotePath)
+  }
+
+  if (fs.existsSync(datedNotePath)) {
+    let content = fs.readFileSync(datedNotePath, 'utf8')
+    const oldLink = `* [${nameBefore}](./${foldername}/${slugBefore}.md)`
+    const newLink = `* [${nameAfter}](./${foldername}/${slugAfter}.md)`
+    content = content.replace(oldLink, newLink)
+    fs.writeFileSync(datedNotePath, content)
+  }
+}
+
+module.exports = { createNote, renameNote }

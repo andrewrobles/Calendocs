@@ -2,7 +2,7 @@
 
 const { createDay, deleteDay } = require('../src/day')
 const { createMonth } = require('../src/month')
-const { createNote } = require('../src/note')
+const { createNote, renameNote } = require('../src/note')
 
 function printHelp() {
   console.log(`
@@ -27,6 +27,7 @@ async function main() {
     if (cmd === "rename") {
       const nameBefore = args[1]
       const nameAfter = args[2]
+      renameNote(nameBefore, nameAfter)
       console.log(`Renamed note: ${nameAfter}`)
       process.exit(0)
     }

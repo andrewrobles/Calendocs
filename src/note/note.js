@@ -62,6 +62,14 @@ function renameNote(nameBefore, nameAfter) {
 
   if (fs.existsSync(oldNotePath)) {
     fs.renameSync(oldNotePath, newNotePath)
+
+    if (fs.existsSync(newNotePath)) {
+      let noteContent = fs.readFileSync(newNotePath, 'utf8')
+      const oldPageLink = `[${nameBefore}](../${filename})`
+      const newPageLink = `[${nameAfter}](../${filename})`
+      noteContent = noteContent.replace(oldPageLink, newPageLink)
+      fs.writeFileSync(newNotePath, noteContent)
+    }
   }
 
   if (fs.existsSync(datedNotePath)) {

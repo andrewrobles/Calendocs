@@ -1,4 +1,4 @@
-[June](../07/README.md)
+[June](../README.md)
 
 | S | M | T | W | T | F | S |
 |---|---|---|---|---|---|---|

@@ -8,8 +8,8 @@ function createNote(title, testInputDay = null) {
   const filename = `${leadingZeroMonth}-${leadingZeroDay}.md`
   const foldername = `${leadingZeroMonth}-${leadingZeroDay}`
 
-  // Slug for calendar link: remove trailing exclamation marks, keep commas, encode spaces as %20
-  const slug = title.replace(/ /g, '%20')
+  // Slug for calendar link: remove trailing exclamation marks, keep commas, replace spaces
+  const slug = title.replace(/ /g, '-').toLowerCase()
 
   const titledNote = `[${title}](../${filename})\n`
 

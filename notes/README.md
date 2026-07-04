@@ -1,6 +1,12 @@
-<div style="display:flex;gap:1rem;align-items:center">
-<a href="06/README.md">June</a>
-<a href="07/README.md">July</a>
-<div>
+July
+
+| S | M | T | W | T | F | S |
+|---|---|---|---|---|---|---|
+|   |   |   | 1 | 2 | 3 | [4](./07-04.md) |
+| 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| 12 | 13 | 14 | 15 | 16 | 17 | 18 |
+| 19 | 20 | 21 | 22 | 23 | 24 | 25 |
+| 26 | 27 | 28 | 29 | 30 | 31 |   |
+
 
 

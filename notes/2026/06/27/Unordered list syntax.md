@@ -1,4 +1,4 @@
-[Unordered list syntax](../06-27.md)
+[Unordered list syntax](../27.md)
 
 - [x] Use asterisks ( * ) in front of line items for unordered lists
 ```

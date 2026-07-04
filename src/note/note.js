@@ -1,6 +1,10 @@
 const fs = require('fs')
 const path = require('path')
 
+function slugifyTitle(title) {
+  return title.toLowerCase().replace(/!+$/, '').replace(/ /g, '-')
+}
+
 function createNote(title, testInputDay = null) {
   const today = new Date()
   const leadingZeroMonth = String(today.getMonth() + 1).padStart(2, '0')
@@ -8,8 +12,9 @@ function createNote(title, testInputDay = null) {
   const filename = `${leadingZeroMonth}-${leadingZeroDay}.md`
   const foldername = `${leadingZeroMonth}-${leadingZeroDay}`
 
-  // Slug for calendar link: remove trailing exclamation marks, keep commas, encode spaces as %20
-  const slug = title.replace(/ /g, '%20')
+  // Slug for calendar link: remove trailing exclamation marks, keep commas, replace spaces
+  const slug = slugifyTitle(title)
+  const sluggedFilename = `${slug}.md`
 
   const titledNote = `[${title}](../${filename})\n`
 
@@ -19,7 +24,7 @@ function createNote(title, testInputDay = null) {
   } else {
     const cwd = process.cwd()
     const folderPath = path.join(cwd, foldername)
-    const titledNotePath = path.join(folderPath, `${slug}.md`)
+    const titledNotePath = path.join(folderPath, sluggedFilename)
     const datedNotePath = path.join(cwd, filename)
 
     if (!fs.existsSync(folderPath)) {
@@ -27,7 +32,7 @@ function createNote(title, testInputDay = null) {
     }
 
     if (!fs.existsSync(titledNotePath)) {
-      fs.writeFileSync(path.join(folderPath, `${title}.md`), titledNote)
+      fs.writeFileSync(path.join(folderPath, sluggedFilename), titledNote)
     }
 
     const datedLink = `* [${title}](./${foldername}/${slug}.md)`
@@ -46,8 +51,8 @@ function createNote(title, testInputDay = null) {
 
 function renameNote(nameBefore, nameAfter) {
   const cwd = process.cwd()
-  const slugBefore = nameBefore.replace(/ /g, '%20')
-  const slugAfter = nameAfter.replace(/ /g, '%20')
+  const slugBefore = slugifyTitle(nameBefore)
+  const slugAfter = slugifyTitle(nameAfter)
 
   const today = new Date()
   const leadingZeroMonth = String(today.getMonth() + 1).padStart(2, '0')
@@ -56,8 +61,8 @@ function renameNote(nameBefore, nameAfter) {
   const filename = `${leadingZeroMonth}-${leadingZeroDay}.md`
 
   const folderPath = path.join(cwd, foldername)
-  const oldNotePath = path.join(folderPath, `${nameBefore}.md`)
-  const newNotePath = path.join(folderPath, `${nameAfter}.md`)
+  const oldNotePath = path.join(folderPath, `${slugBefore}.md`)
+  const newNotePath = path.join(folderPath, `${slugAfter}.md`)
   const datedNotePath = path.join(cwd, filename)
 
   if (fs.existsSync(oldNotePath)) {

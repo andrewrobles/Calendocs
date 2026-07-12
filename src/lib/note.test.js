@@ -9,7 +9,7 @@ let testInputDay = `
 let testOutputDayExpected = `
 [1/1](./README.md)
 
-- [Hello, World!](./01-01/Hello,%20World!.md)
+- [Hello, World!](./01-01/hello,-world.md)
 `
 const testOutputNoteExpected = `[Hello, World!](../01-01.md)
 `

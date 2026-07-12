@@ -17,6 +17,7 @@
     "day": "node bin/cli.js day",
     "month": "node bin/cli.js month",
     "test": "jest",
-    "stash": "git add -A && git stash"
+    "stash": "git add -A && git stash",
+    "discard": "git reset --hard HEAD && git clean -fd"
   }
 }

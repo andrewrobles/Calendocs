@@ -1,34 +1,12 @@
-# Notes
+July
 
-Capture thoughts or detailed notes.
+| S | M | T | W | T | F | S |
+|---|---|---|---|---|---|---|
+|   |   |   | 1 | 2 | 3 | 4 |
+| 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| 12 | 13 | 14 | [15](./07-15.md) | 16 | 17 | 18 |
+| 19 | 20 | 21 | 22 | 23 | 24 | 25 |
+| 26 | 27 | 28 | 29 | 30 | 31 |   |
 
-## Setup
+- [How to](./how-to.md)
 
-Install as a command
-```
-npm link
-```
-
-Uninstall as a command
-```
-npm link
-```
-
-## Tests
-
-Run all tests
-
-```bash
-npm run test
-```
-
-Run a single test file
-```bash
-cd /path/to/file
-npx jest <test-file>
-```
-
-Run a single test
-```bash
-npx jest <test-file> -t "<test name>"
-```

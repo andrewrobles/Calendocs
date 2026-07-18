@@ -54,7 +54,9 @@ async function main() {
     const result = createDay()
     if (result?.message) console.log(result.message)
 
-    const title = args.join(' ').trim()
+    const title = cmd === 'new'
+      ? args.slice(1).join(' ').trim() || String(new Date().getDate())
+      : args.join(' ').trim()
 
     if (!title) {
       console.error('Error: title is required\n')
@@ -63,7 +65,7 @@ async function main() {
     }
 
     createNote(title)
-    console.log(`Created note: "${title}"`)
+    process.stdout.write(`Created note: "${title}"`)
     process.exit(0)
 
   } catch (err) {

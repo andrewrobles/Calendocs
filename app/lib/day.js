@@ -36,11 +36,11 @@ function createDay(testCalendar = null) {
   const leadingZeroMonth = String(today.getMonth() + 1).padStart(2, '0')
   const day = String(today.getDate())
   const leadingZeroDay = String(today.getDate()).padStart(2, '0')
-  const filename = `${leadingZeroMonth}-${leadingZeroDay}.md`
+  const filename = testCalendar === null ? `${day}.md` : `${leadingZeroMonth}-${leadingZeroDay}.md`
   const filepath = path.join(process.cwd(), filename)
 
   const fileContent = `[${month}/${day}](./README.md)\n`
-  const docLink = `[${today.getDate()}](./${leadingZeroMonth}-${leadingZeroDay}.md)`
+  const docLink = `[${today.getDate()}](./${filename})`
 
   const pattern = new RegExp(`(\\|\\s*)${today.getDate()}(\\s*\\|)`)
 
@@ -70,14 +70,13 @@ function createDay(testCalendar = null) {
 const deleteDay = () => {
   // delete file corresponding to today
   const today = new Date()
-  const leadingZeroMonth = String(today.getMonth() + 1).padStart(2, '0')
-  const leadingZeroDay = String(today.getDate()).padStart(2, '0')
-  const filename = `${leadingZeroMonth}-${leadingZeroDay}.md`
+  const day = String(today.getDate())
+  const filename = `${day}.md`
   const filepath = path.join(process.cwd(), filename)
   fs.unlinkSync(filepath)
 
   // delete link from day in calendar
-  const docLink = `[${today.getDate()}](./${leadingZeroMonth}-${leadingZeroDay}.md)`
+  const docLink = `[${today.getDate()}](./${filename})`
   const readmeContent = fs.readFileSync(path.join(process.cwd(), 'README.md'), 'utf8')
   const updatedContent = readmeContent.replace(docLink, `${today.getDate()}`)
   fs.writeFileSync(path.join(process.cwd(), 'README.md'), updatedContent)

@@ -9,8 +9,9 @@ function createNote(title, testInputDay = null) {
   const today = new Date()
   const leadingZeroMonth = String(today.getMonth() + 1).padStart(2, '0')
   const leadingZeroDay = String(today.getDate()).padStart(2, '0')
-  const filename = `${leadingZeroMonth}-${leadingZeroDay}.md`
-  const foldername = `${leadingZeroMonth}-${leadingZeroDay}`
+  const day = String(today.getDate())
+  const filename = testInputDay === null ? `${day}.md` : `${leadingZeroMonth}-${leadingZeroDay}.md`
+  const foldername = testInputDay === null ? `${day}` : `${leadingZeroMonth}-${leadingZeroDay}`
 
   // Slug for calendar link: remove trailing exclamation marks, keep commas, replace spaces
   const slug = slugifyTitle(title)

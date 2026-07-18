@@ -1,7 +1,9 @@
 import subprocess
 import unittest
 
-expected = '''| S | M | T | W | T | F | S |
+expected = '''July
+
+| S | M | T | W | T | F | S |
 |---|---|---|---|---|---|---|
 |   |   |   | 1 | 2 | 3 | 4 |
 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |

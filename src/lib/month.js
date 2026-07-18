@@ -66,13 +66,14 @@ function createMonth(index = 0, testReadme = null) {
   )
 
   const output = [headerRow, separatorRow, ...bodyRows].join('\n')
+  const contentToWrite = testReadme !== null ? output : `${monthName}\n\n${output}`
 
   if (testReadme !== null) {
-    write(output, testReadme)
+    write(contentToWrite, testReadme)
     return output
   }
 
-  write(output)
+  write(contentToWrite)
   return monthName
 }
 

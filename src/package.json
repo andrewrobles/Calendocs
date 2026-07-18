@@ -4,10 +4,10 @@
   "author": "Andrew Robles",
   "files": [
     "bin",
-    "src"
+    "main"
   ],
   "bin": {
-    "note": "bin/cli.js"
+    "note": "bin/main.js"
   },
   "devDependencies": {
     "jest": "^30.2.0"

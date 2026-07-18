@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const { createDay, deleteDay } = require('../src/day')
-const { createMonth } = require('../src/month')
-const { createNote, renameNote } = require('../src/note')
+const { createDay, deleteDay } = require('../lib/day')
+const { createMonth } = require('../lib/month')
+const { createNote, renameNote } = require('../lib/note')
 
 function printHelp() {
   console.log(`

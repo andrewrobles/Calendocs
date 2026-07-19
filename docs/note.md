@@ -1,6 +1,15 @@
 [note](./README.md)
 
-new
 pin    
 rename
-delete    
+
+```diff
+% mkdir test
+% cd test
+% touch README.md
+% note
+- zsh: command not found: note
++ These are common commands used in various situations:
++     note month          Create calendar of the current month
++     note "<title>"      Create a new note
+````

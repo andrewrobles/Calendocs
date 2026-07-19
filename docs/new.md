@@ -1,0 +1,31 @@
+[new](./README.md)
+
+```diff
+% cat README.md
++ July
++
+| S | M | T | W | T | F | S |
+|---|---|---|---|---|---|---|
+|   |   |   | 1 | 2 | 3 | 4 |
+| 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+- | 12 | 13 | 14 | 15 | 16 | 17 | [18](./07-18.md) |
++ | 12 | 13 | 14 | 15 | 16 | 17 | [18](./18.md) |
+| 19 | 20 | 21 | 22 | 23 | 24 | 25 |
+| 26 | 27 | 28 | 29 | 30 | 31 |   |
+
+% ls
+- 07-18.md        README.md
++ 18.md        README.md
+% note new "test"
+Created note: "test"
+% ls
+- 07-18        18.md        README.md
++ 18           18.md        README.md
+- % cat 07-18.md
++ % cat 18.md
+- [7/18](./README.md)
++ [7/18](./README.md)
+
+- * [test](./07-18/test.md)
++ * [test](./18/test.md)
+```

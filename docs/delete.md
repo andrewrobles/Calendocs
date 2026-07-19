@@ -1,4 +1,4 @@
-[15](../README.md)
+[delete](./README.md)
 
 ```diff
 $ note "Lorem Ipsum"

@@ -13,8 +13,8 @@ month = '''July
 |---|---|---|---|---|---|---|
 |   |   |   | 1 | 2 | 3 | 4 |
 | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
-| 12 | 13 | 14 | 15 | 16 | 17 | [18](./18.md) |
-| 19 | 20 | 21 | 22 | 23 | 24 | 25 |
+| 12 | 13 | 14 | 15 | 16 | 17 | 18 |
+| 19 | 20 | [21](./21.md) | 22 | 23 | 24 | 25 |
 | 26 | 27 | 28 | 29 | 30 | 31 |   |
 
 '''
@@ -26,8 +26,8 @@ class TestNewNote(unittest.TestCase):
         subprocess.run(["node", str(CLI_PATH), "month"], cwd=NOTES_DIR, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     def test_output(self):
-        result = subprocess.run(["node", str(CLI_PATH), "new"], cwd=NOTES_DIR, check=True, capture_output=True, text=True)
-        expected = 'Created note: "18"'
+        result = subprocess.run(["node", str(CLI_PATH), "new", "test"], cwd=NOTES_DIR, check=True, capture_output=True, text=True)
+        expected = 'Created note: "test"'
         self.assertEqual(result.stdout, expected)
 
     def test_month(self):

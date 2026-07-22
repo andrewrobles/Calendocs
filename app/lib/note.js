@@ -56,10 +56,9 @@ function renameNote(nameBefore, nameAfter) {
   const slugAfter = slugifyTitle(nameAfter)
 
   const today = new Date()
-  const leadingZeroMonth = String(today.getMonth() + 1).padStart(2, '0')
-  const leadingZeroDay = String(today.getDate()).padStart(2, '0')
-  const foldername = `${leadingZeroMonth}-${leadingZeroDay}`
-  const filename = `${leadingZeroMonth}-${leadingZeroDay}.md`
+  const day = String(today.getDate())
+  const foldername = day
+  const filename = `${day}.md`
 
   const folderPath = path.join(cwd, foldername)
   const oldNotePath = path.join(folderPath, `${slugBefore}.md`)

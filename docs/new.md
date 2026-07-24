@@ -1,6 +1,8 @@
 [new](./README.md)
 
 ```diff
+% note new "test"
+Created note: "test"
 % cat README.md
 + July
 +
@@ -16,11 +18,6 @@
 % ls
 - 07-18.md        README.md
 + 18.md        README.md
-% note new "test"
-Created note: "test"
-% ls
-- 07-18        18.md        README.md
-+ 18           18.md        README.md
 - % cat 07-18.md
 + % cat 18.md
 - [7/18](./README.md)

@@ -8,7 +8,4 @@ July
 | 19 | 20 | [21](./21.md) | [22](./22.md) | 23 | 24 | 25 |
 | 26 | 27 | 28 | 29 | 30 | 31 |   |
 
-[rename](./rename.md)
 [new](./new.md)
-[delete](./delete.md)
-pin

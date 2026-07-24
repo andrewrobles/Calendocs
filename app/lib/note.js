@@ -1,12 +1,13 @@
 const fs = require('fs')
 const path = require('path')
+const { getCurrentDate } = require('./time')
 
 function slugifyTitle(title) {
   return title.toLowerCase().replace(/!+$/, '').replace(/ /g, '-')
 }
 
 function createNote(title, testInputDay = null) {
-  const today = new Date()
+  const today = getCurrentDate()
   const leadingZeroMonth = String(today.getMonth() + 1).padStart(2, '0')
   const leadingZeroDay = String(today.getDate()).padStart(2, '0')
   const day = String(today.getDate())
@@ -55,7 +56,7 @@ function renameNote(nameBefore, nameAfter) {
   const slugBefore = slugifyTitle(nameBefore)
   const slugAfter = slugifyTitle(nameAfter)
 
-  const today = new Date()
+  const today = getCurrentDate()
   const day = String(today.getDate())
   const foldername = day
   const filename = `${day}.md`

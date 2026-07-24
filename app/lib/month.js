@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const { getCurrentDate } = require('./time')
 
 const write = (string, testReadme = null) => {
   const newContent = string + '\n\n'
@@ -21,7 +22,7 @@ const write = (string, testReadme = null) => {
 function createMonth(index = 0, testReadme = null) {
   const weekStartsOn = 0
 
-  const now = new Date()
+  const now = getCurrentDate()
   const year = now.getFullYear()
   const monthIndex = now.getMonth() + index
   const monthNames = [

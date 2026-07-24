@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const { spawnSync } = require('child_process')
+const { getCurrentDate } = require('./time')
 
 function copyToClipboard(text) {
   const platform = process.platform
@@ -31,7 +32,7 @@ function copyToClipboard(text) {
 }
 
 function createDay(testCalendar = null) {
-  const today = new Date()
+  const today = getCurrentDate()
   const month = String(today.getMonth() + 1)
   const leadingZeroMonth = String(today.getMonth() + 1).padStart(2, '0')
   const day = String(today.getDate())
@@ -69,7 +70,7 @@ function createDay(testCalendar = null) {
 
 const deleteDay = () => {
   // delete file corresponding to today
-  const today = new Date()
+  const today = getCurrentDate()
   const day = String(today.getDate())
   const filename = `${day}.md`
   const filepath = path.join(process.cwd(), filename)

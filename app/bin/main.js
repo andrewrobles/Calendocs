@@ -3,6 +3,7 @@
 const { createDay, deleteDay } = require('../lib/day')
 const { createMonth } = require('../lib/month')
 const { createNote, renameNote } = require('../lib/note')
+const { getCurrentDate } = require('../lib/time')
 
 function printHelp() {
   console.log(`
@@ -32,12 +33,18 @@ async function main() {
       process.exit(0)
     }
 
-    if (cmd === 'today') {
+    if (cmd === 'today' || cmd === 'day') {
       if (subCmd === '-d') {
         deleteDay()
       } else {
-        const result = createDay()
-        if (result?.message) console.log(result.message)
+        createDay()
+        const today = getCurrentDate()
+        const formattedDay = today.toLocaleDateString('en-US', {
+          weekday: 'long',
+          month: 'long',
+          day: 'numeric'
+        })
+        console.log(`Created day: "${formattedDay}"`)
       }
       process.exit(0)
     }
@@ -55,7 +62,7 @@ async function main() {
     if (result?.message) console.log(result.message)
 
     const title = cmd === 'new'
-      ? args.slice(1).join(' ').trim() || String(new Date().getDate())
+      ? args.slice(1).join(' ').trim() || String(getCurrentDate().getDate())
       : args.join(' ').trim()
 
     if (!title) {

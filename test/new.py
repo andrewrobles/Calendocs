@@ -1,3 +1,4 @@
+import os
 import shutil
 import subprocess
 import unittest
@@ -6,6 +7,7 @@ from pathlib import Path
 TEST_DIR = Path(__file__).resolve().parent
 NOTES_DIR = TEST_DIR / "notes"
 CLI_PATH = TEST_DIR.parent / "app" / "bin" / "main.js"
+TEST_DATE = "2026-07-21T12:00:00"
 
 month = '''July
 
@@ -23,15 +25,21 @@ class TestNewNote(unittest.TestCase):
     def setUp(self):
         shutil.rmtree(NOTES_DIR, ignore_errors=True)
         NOTES_DIR.mkdir(parents=True, exist_ok=True)
-        subprocess.run(["node", str(CLI_PATH), "month"], cwd=NOTES_DIR, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        env = os.environ.copy()
+        env["NOTES_TEST_DATE"] = TEST_DATE
+        subprocess.run(["node", str(CLI_PATH), "month"], cwd=NOTES_DIR, env=env, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     def test_output(self):
-        result = subprocess.run(["node", str(CLI_PATH), "new", "test"], cwd=NOTES_DIR, check=True, capture_output=True, text=True)
+        env = os.environ.copy()
+        env["NOTES_TEST_DATE"] = TEST_DATE
+        result = subprocess.run(["node", str(CLI_PATH), "new", "test"], cwd=NOTES_DIR, env=env, check=True, capture_output=True, text=True)
         expected = 'Created note: "test"'
         self.assertEqual(result.stdout, expected)
 
     def test_month(self):
-        subprocess.run(["node", str(CLI_PATH), "new"], cwd=NOTES_DIR, check=True, capture_output=True, text=True)
+        env = os.environ.copy()
+        env["NOTES_TEST_DATE"] = TEST_DATE
+        subprocess.run(["node", str(CLI_PATH), "new"], cwd=NOTES_DIR, env=env, check=True, capture_output=True, text=True)
         result = subprocess.run(["cat", str(NOTES_DIR / "README.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, month)
 

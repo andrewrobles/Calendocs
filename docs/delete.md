@@ -1,0 +1,10 @@
+[delete](./README.md)
+
+```diff
+$ note "Lorem Ipsum"
+Created note: "Lorem Ipsum"
+
+$ note delete "Lorem Ipsum"
+- Created note: "delete Lorem Ipsum"
++ Deleted note: "Lorem ipsum"
+```

@@ -9,17 +9,6 @@ NOTES_DIR = TEST_DIR / "notes"
 CLI_PATH = TEST_DIR.parent / "app" / "bin" / "main.js"
 TEST_DATE = "2026-07-21T12:00:00"
 
-calendar = '''July
-
-| S | M | T | W | T | F | S |
-|---|---|---|---|---|---|---|
-|   |   |   | 1 | 2 | 3 | 4 |
-| 5 | 6 | 7 | 8 | 9 | 10 | 11 |
-| 12 | 13 | 14 | 15 | 16 | 17 | 18 |
-| 19 | 20 | [21](./21.md) | 22 | 23 | 24 | 25 |
-| 26 | 27 | 28 | 29 | 30 | 31 |   |
-
-'''
 
 class TestNewNote(unittest.TestCase):
     def setUp(self):
@@ -28,6 +17,9 @@ class TestNewNote(unittest.TestCase):
         env = os.environ.copy()
         env["NOTES_TEST_DATE"] = TEST_DATE
         subprocess.run(["node", str(CLI_PATH), "month"], cwd=NOTES_DIR, env=env, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    def tearDown(self):
+        shutil.rmtree(NOTES_DIR, ignore_errors=True)
 
     def test_new_note(self):
         '''
@@ -41,22 +33,41 @@ class TestNewNote(unittest.TestCase):
         self.assertEqual(result.stdout, expected)
 
         '''
-        % cat README.md
-        + July
-        +
-        | S | M | T | W | T | F | S |
-        |---|---|---|---|---|---|---|
-        |   |   |   | 1 | 2 | 3 | 4 |
-        | 5 | 6 | 7 | 8 | 9 | 10 | 11 |
-        | 12 | 13 | 14 | 15 | 16 | 17 | [18](./18.md) |
-        | 19 | 20 | [21](./21.md) | 22 | 23 | 24 | 25 |
-        | 26 | 27 | 28 | 29 | 30 | 31 |   |
+        $ cat README.md
         '''
-        result = subprocess.run(["cat", str(NOTES_DIR / "README.md")], capture_output=True, text=True, check=True)
-        self.assertEqual(result.stdout, calendar)
+        stdout = '''July
 
-    def tearDown(self):
-        shutil.rmtree(NOTES_DIR, ignore_errors=True)
+| S | M | T | W | T | F | S |
+|---|---|---|---|---|---|---|
+|   |   |   | 1 | 2 | 3 | 4 |
+| 5 | 6 | 7 | 8 | 9 | 10 | 11 |
+| 12 | 13 | 14 | 15 | 16 | 17 | 18 |
+| 19 | 20 | [21](./21.md) | 22 | 23 | 24 | 25 |
+| 26 | 27 | 28 | 29 | 30 | 31 |   |
+
+'''
+        result = subprocess.run(["cat", str(NOTES_DIR / "README.md")], capture_output=True, text=True, check=True)
+        self.assertEqual(result.stdout, stdout)
+
+        '''
+        $ ls
+        '''
+        stdout = '''21
+21.md
+README.md
+'''
+        result = subprocess.run(["ls", str(NOTES_DIR)], capture_output=True, text=True, check=True)
+        self.assertEqual(result.stdout, stdout)
+
+        '''
+        $ cat 21.md
+        '''
+        stdout = '[21](./README.md)\n\n* [test](./21/test.md)'
+        result = subprocess.run(["cat", str(NOTES_DIR / "21.md")], capture_output=True, text=True, check=True)
+        self.assertEqual(result.stdout, stdout)
+
+
+
 
 if __name__ == "__main__":
     unittest.main()

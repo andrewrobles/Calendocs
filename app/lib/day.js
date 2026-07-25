@@ -40,7 +40,7 @@ function createDay(testCalendar = null) {
   const filename = testCalendar === null ? `${day}.md` : `${leadingZeroMonth}-${leadingZeroDay}.md`
   const filepath = path.join(process.cwd(), filename)
 
-  const fileContent = `[${month}/${day}](./README.md)\n`
+  const fileContent = `[${day}](./README.md)\n`
   const docLink = `[${today.getDate()}](./${filename})`
 
   const pattern = new RegExp(`(\\|\\s*)${today.getDate()}(\\s*\\|)`)

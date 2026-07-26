@@ -3,10 +3,7 @@
 const { createDay, deleteDay } = require('../lib/day')
 const { createMonth } = require('../lib/month')
 const { createNote, renameNote } = require('../lib/note')
-<<<<<<<< HEAD:app/bin/main.js
 const { getCurrentDate } = require('../lib/time')
-========
->>>>>>>> trunk:src/bin/main.js
 
 function printHelp() {
   console.log(`

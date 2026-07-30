@@ -17,7 +17,6 @@ def main():
         print("Error: title is required")
         return
 
-    print(f'Created note: "{title}"')
 
 if __name__ == "__main__":
     main()

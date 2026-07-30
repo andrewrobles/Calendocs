@@ -1,4 +1,4 @@
-[July](../README.md)
+July
 ---
 
 | S | M | T | W | T | F | S |

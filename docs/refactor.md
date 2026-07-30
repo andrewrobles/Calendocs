@@ -24,7 +24,6 @@
 
 
 
-<!--
 ### Phase 2: Port commands in small, verifiable steps
 1. Port the month command first. This is the simplest path because it only writes the calendar content to README and is covered by [test/test_month.py](test/test_month.py).
 2. Port the day command next. This should support creating and deleting the day note and updating the README link, matching [test/test_day.py](test/test_day.py).

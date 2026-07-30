@@ -1,15 +1,30 @@
-[plan](./README.md)
+[refactor](./README.md)
 ---
-
-## Migrate the CLI from Node.js to Python one command at a time
-
-The safest path is to preserve the current CLI contract, port the behavior behind it incrementally, and verify each command before moving to the next. The existing Node entrypoint in [app/bin/main.js](app/bin/main.js) and the tests in [test/test_day.py](test/test_day.py), [test/test_month.py](test/test_month.py), [test/test_new.py](test/test_new.py), and [test/test_rename.py](test/test_rename.py) provide the behavior contract to preserve.
 
 ### Phase 1: Establish a Python-compatible shell
 1. Add a Python entrypoint such as [app/bin/main.py](app/bin/main.py) that accepts the same arguments as the current CLI.
 2. Keep the current Node entrypoint working initially so the app remains usable during the migration.
 3. Add a small compatibility layer for the shared date handling in [app/lib/time.js](app/lib/time.js) so the Python commands can read the same environment override used by tests.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 ### Phase 2: Port commands in small, verifiable steps
 1. Port the month command first. This is the simplest path because it only writes the calendar content to README and is covered by [test/test_month.py](test/test_month.py).
 2. Port the day command next. This should support creating and deleting the day note and updating the README link, matching [test/test_day.py](test/test_day.py).

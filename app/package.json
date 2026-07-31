@@ -8,7 +8,7 @@
   ],
   "bin": {
     "notes": "bin/main.js",
-    "note": "bin/python.py"
+    "note": "bin/note"
   },
   "devDependencies": {
     "jest": "^30.2.0"

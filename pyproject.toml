@@ -11,4 +11,4 @@ packages = ["app", "app.bin"]
 
 
 [project.scripts]
-note = "app.bin.main:main"
+note = "app.bin.note:main"

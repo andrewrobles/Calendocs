@@ -12,7 +12,7 @@ def main():
 
     if args[0] != "new":
         print("Python entrypoint placeholder: only 'new' is supported for now")
-        return 0
+        return 2
 
     title = " ".join(args[1:]).strip()
     if not title:

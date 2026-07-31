@@ -59,8 +59,8 @@ def main():
         print('Usage: note new <title>')
         return 0
 
-    if args[0] != 'new':
-        print('Python entrypoint placeholder: only \'new\' is supported for now')
+    if args[0] != 'create':
+        print('Python entrypoint placeholder: only \'create\' is supported for now')
         return 2
 
     title = ' '.join(args[1:]).strip()

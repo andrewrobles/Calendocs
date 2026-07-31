@@ -22,12 +22,11 @@ class TestNewNote(unittest.TestCase):
 
     def test_new_test_note(self):
         '''
-        $ note new "test"
-        Created note: "test"
+        $ note create "test"
         '''
         env = os.environ.copy()
         env["NOTES_TEST_DATE"] = TEST_DATE
-        result = subprocess.run(["python3", str(CLI_PATH), "new", "test"], cwd=NOTES_DIR, env=env, check=True, capture_output=True, text=True)
+        result = subprocess.run(["python3", str(CLI_PATH), "create", "test"], cwd=NOTES_DIR, env=env, check=True, capture_output=True, text=True)
         expected = ''
         self.assertEqual(result.stdout, expected)
 

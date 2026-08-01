@@ -31,13 +31,19 @@ class TestNewNote(unittest.TestCase):
         self.assertEqual(result.stdout, expected)
 
         '''
-        $ cat README.md
+        $ ls
         '''
 
         result = subprocess.run(["ls", str(NOTES_DIR)], capture_output=True, text=True, check=True)
-        stdout = '''README.md
+        stdout = '''21
+21.md
+README.md
 '''
         self.assertEqual(result.stdout, stdout)
+
+        '''
+        $ cat README.md
+        '''
         stdout = '''July
 
 | S | M | T | W | T | F | S |
@@ -51,16 +57,6 @@ class TestNewNote(unittest.TestCase):
 '''
         result = subprocess.run(["cat", str(NOTES_DIR / "README.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
-
-#         '''
-#         $ ls
-#         '''
-#         stdout = '''21
-# 21.md
-# README.md
-# '''
-#         result = subprocess.run(["ls", str(NOTES_DIR)], capture_output=True, text=True, check=True)
-#         self.assertEqual(result.stdout, stdout)
 
 #         '''
 #         $ cat 21.md

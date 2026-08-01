@@ -58,12 +58,12 @@ README.md
         result = subprocess.run(["cat", str(NOTES_DIR / "README.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
 
-#         '''
-#         $ cat 21.md
-#         '''
-#         stdout = '[21](./README.md)\n\n* [test](./21/test.md)'
-#         result = subprocess.run(["cat", str(NOTES_DIR / "21.md")], capture_output=True, text=True, check=True)
-#         self.assertEqual(result.stdout, stdout)
+        '''
+        $ cat 21.md
+        '''
+        stdout = '[21](./README.md)\n\n* [test](./21/test.md)'
+        result = subprocess.run(["cat", str(NOTES_DIR / "21.md")], capture_output=True, text=True, check=True)
+        self.assertEqual(result.stdout, stdout)
 
 #     def test_new_day_note(self):
 #         '''

@@ -80,7 +80,9 @@ def main():
     note_path.write_text(f"[{title}](../{day}.md)\n", encoding='utf-8')
 
     dated_note_path = Path.cwd() / f"{day}.md"
-    dated_note_path.write_text(f"[{day}](./README.md)\n", encoding='utf-8')
+    slug = title.lower().replace(' ', '-')
+
+    dated_note_path.write_text(f"[{day}](./README.md)\n\n* [{title}](./{day}/{slug}.md)", encoding='utf-8')
     return 0
 
 

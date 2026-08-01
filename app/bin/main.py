@@ -64,25 +64,26 @@ def main():
         return 2
 
     title = ' '.join(args[1:]).strip()
-    if not title:
-        print('Error: title is required')
-        return 1
 
     readme_path = Path.cwd() / 'README.md'
     readme_path.write_text(format_month_readme(get_current_date()), encoding='utf-8')
 
     today = get_current_date()
     day = str(today.day)
-    folder_path = Path.cwd() / day
-    folder_path.mkdir(parents=True, exist_ok=True)
-
-    note_path = folder_path / f"{title.lower().replace(' ', '-')}.md"
-    note_path.write_text(f"[{title}](../{day}.md)\n", encoding='utf-8')
-
     dated_note_path = Path.cwd() / f"{day}.md"
-    slug = title.lower().replace(' ', '-')
 
-    dated_note_path.write_text(f"[{day}](./README.md)\n\n* [{title}](./{day}/{slug}.md)", encoding='utf-8')
+    if title:
+        folder_path = Path.cwd() / day
+        folder_path.mkdir(parents=True, exist_ok=True)
+
+        note_path = folder_path / f"{title.lower().replace(' ', '-')}.md"
+        note_path.write_text(f"[{title}](../{day}.md)\n", encoding='utf-8')
+
+        slug = title.lower().replace(' ', '-')
+        dated_note_path.write_text(f"[{day}](./README.md)\n\n* [{title}](./{day}/{slug}.md)", encoding='utf-8')
+    else:
+        dated_note_path.write_text(f"[{day}](./README.md)\n", encoding='utf-8')
+
     return 0
 
 

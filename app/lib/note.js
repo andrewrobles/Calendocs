@@ -87,4 +87,53 @@ function renameNote(nameBefore, nameAfter) {
   }
 }
 
-module.exports = { createNote, renameNote }
+function deleteNote(title) {
+  const cwd = process.cwd()
+  const slug = slugifyTitle(title)
+
+  const today = getCurrentDate()
+  const day = String(today.getDate())
+  const foldername = day
+  const filename = `${day}.md`
+
+  const folderPath = path.join(cwd, foldername)
+  const titledNotePath = path.join(folderPath, `${slug}.md`)
+  const datedNotePath = path.join(cwd, filename)
+
+  if (fs.existsSync(titledNotePath)) {
+    fs.unlinkSync(titledNotePath)
+  }
+
+  if (fs.existsSync(folderPath) && fs.readdirSync(folderPath).length === 0) {
+    fs.rmdirSync(folderPath)
+  }
+
+  if (fs.existsSync(datedNotePath)) {
+    let content = fs.readFileSync(datedNotePath, 'utf8')
+    const datedLink = `* [${title}](./${foldername}/${slug}.md)`
+    content = content.replace(`\n${datedLink}`, '')
+    fs.writeFileSync(datedNotePath, content)
+  }
+}
+
+function clearNote() {
+  const cwd = process.cwd()
+  const today = getCurrentDate()
+  const day = String(today.getDate())
+  const datedNotePath = path.join(cwd, `${day}.md`)
+  const scratchPath = path.join(cwd, '.md')
+
+  if (!fs.existsSync(scratchPath)) {
+    return
+  }
+
+  const scratchContent = fs.readFileSync(scratchPath, 'utf8')
+
+  if (fs.existsSync(datedNotePath)) {
+    fs.appendFileSync(datedNotePath, `\n${scratchContent}`)
+  }
+
+  fs.writeFileSync(scratchPath, '')
+}
+
+module.exports = { createNote, renameNote, deleteNote, clearNote }

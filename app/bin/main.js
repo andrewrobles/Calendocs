@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 
+const fs = require('fs')
+const path = require('path')
 const { createDay, deleteDay } = require('../lib/day')
-const { createMonth } = require('../lib/month')
-const { createNote, renameNote } = require('../lib/note')
+const { createMonth, monthExists } = require('../lib/month')
+const { createNote, renameNote, deleteNote, clearNote } = require('../lib/note')
 const { getCurrentDate } = require('../lib/time')
 
 function printHelp() {
   console.log(`
-These are common commands used in various situations:
-    note month          Create calendar of the current month
-    note "<title>"      Create a new note
+new
+rename
 `)
 }
 
@@ -25,6 +26,13 @@ async function main() {
   }
 
   try {
+    if (cmd === 'init') {
+      const notesDir = path.join(process.cwd(), subCmd)
+      fs.mkdirSync(notesDir, { recursive: true })
+      fs.writeFileSync(path.join(notesDir, 'README.md'), '')
+      process.exit(0)
+    }
+
     if (cmd === "rename") {
       const nameBefore = args[1]
       const nameAfter = args[2]
@@ -33,18 +41,33 @@ async function main() {
       process.exit(0)
     }
 
-    if (cmd === 'today' || cmd === 'day') {
+    if (cmd === 'clear') {
+      clearNote()
+      process.exit(0)
+    }
+
+    if (cmd === 'new') {
       if (subCmd === '-d') {
         deleteDay()
       } else {
+        if (!monthExists()) {
+          createMonth()
+        }
         createDay()
-        const today = getCurrentDate()
-        const formattedDay = today.toLocaleDateString('en-US', {
-          weekday: 'long',
-          month: 'long',
-          day: 'numeric'
-        })
-        console.log(`Created day: "${formattedDay}"`)
+        const title = args.slice(1).join(' ').trim()
+        if (title) {
+          createNote(title)
+        }
+      }
+      process.exit(0)
+    }
+
+    if (cmd === 'delete') {
+      const title = args.slice(1).join(' ').trim()
+      if (title) {
+        deleteNote(title)
+      } else {
+        deleteDay()
       }
       process.exit(0)
     }

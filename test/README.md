@@ -1,2 +1,0 @@
-- `run.sh` → runs unit tests
-- `.run.sh setup` → creates `test/notes`, enters it, and runs `note month` for manual testing

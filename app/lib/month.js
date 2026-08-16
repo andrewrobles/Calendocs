@@ -2,6 +2,11 @@ const fs = require('fs')
 const path = require('path')
 const { getCurrentDate } = require('./time')
 
+const monthNames = [
+  'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+  'September', 'October', 'November', 'December'
+]
+
 const write = (string, testReadme = null) => {
   const newContent = string + '\n\n'
 
@@ -25,10 +30,6 @@ function createMonth(index = 0, testReadme = null) {
   const now = getCurrentDate()
   const year = now.getFullYear()
   const monthIndex = now.getMonth() + index
-  const monthNames = [
-    'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-    'September', 'October', 'November', 'December'
-  ]
   const monthName = monthNames[monthIndex]
 
   const firstDay = new Date(year, monthIndex, 1)
@@ -78,4 +79,17 @@ function createMonth(index = 0, testReadme = null) {
   return monthName
 }
 
-module.exports = { createMonth }
+function monthExists(index = 0) {
+  const now = getCurrentDate()
+  const monthName = monthNames[now.getMonth() + index]
+  const filepath = path.join(process.cwd(), 'README.md')
+
+  if (!fs.existsSync(filepath)) {
+    return false
+  }
+
+  const content = fs.readFileSync(filepath, 'utf8')
+  return content.includes(monthName)
+}
+
+module.exports = { createMonth, monthExists }

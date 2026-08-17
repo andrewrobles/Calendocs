@@ -31,7 +31,7 @@ class TestNotesREADME(unittest.TestCase):
         env["NOTES_TEST_DATE"] = TEST_DATE
         result = subprocess.run(["node", str(CLI_PATH), "month"], cwd=NOTES_DIR, env=env, capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, 'Created month: "July"\n')
-        result = subprocess.run(["cat", str(NOTES_DIR / "README.md")], capture_output=True, text=True, check=True)
+        result = subprocess.run(["cat", str(NOTES_DIR / "index.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, expected)
 
     def tearDown(self):

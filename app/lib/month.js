@@ -14,7 +14,7 @@ const write = (string, testReadme = null) => {
     return newContent + testReadme
   }
 
-  const filename = 'README.md'
+  const filename = 'index.md'
   const filepath = path.join(process.cwd(), filename)
   const existingContent = fs.existsSync(filepath)
     ? fs.readFileSync(filepath, 'utf8')
@@ -82,7 +82,7 @@ function createMonth(index = 0, testReadme = null) {
 function monthExists(index = 0) {
   const now = getCurrentDate()
   const monthName = monthNames[now.getMonth() + index]
-  const filepath = path.join(process.cwd(), 'README.md')
+  const filepath = path.join(process.cwd(), 'index.md')
 
   if (!fs.existsSync(filepath)) {
     return false

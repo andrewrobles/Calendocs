@@ -37,12 +37,12 @@ class TestNewNote(unittest.TestCase):
         result = subprocess.run(["ls", str(NOTES_DIR)], capture_output=True, text=True, check=True)
         stdout = '''21
 21.md
-README.md
+index.md
 '''
         self.assertEqual(result.stdout, stdout)
 
         '''
-        $ cat README.md
+        $ cat index.md
         '''
         stdout = '''July
 
@@ -55,13 +55,13 @@ README.md
 | 26 | 27 | 28 | 29 | 30 | 31 |   |
 
 '''
-        result = subprocess.run(["cat", str(NOTES_DIR / "README.md")], capture_output=True, text=True, check=True)
+        result = subprocess.run(["cat", str(NOTES_DIR / "index.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
 
         '''
         $ cat 21.md
         '''
-        stdout = '[21](./README.md)\n\n* [test](./21/test.md)'
+        stdout = '[21](./index.md)\n\n* [test](./21/test.md)'
         result = subprocess.run(["cat", str(NOTES_DIR / "21.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
 
@@ -77,7 +77,7 @@ README.md
         self.assertEqual(result.stdout, expected)
 
         '''
-        $ cat README.md
+        $ cat index.md
         '''
         stdout = '''July
 
@@ -90,7 +90,7 @@ README.md
 | 26 | 27 | 28 | 29 | 30 | 31 |   |
 
 '''
-        result = subprocess.run(["cat", str(NOTES_DIR / "README.md")], capture_output=True, text=True, check=True)
+        result = subprocess.run(["cat", str(NOTES_DIR / "index.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
         '''
         $ ls
@@ -98,19 +98,19 @@ README.md
 
         result = subprocess.run(["ls", str(NOTES_DIR)], capture_output=True, text=True, check=True)
         stdout = '''21.md
-README.md
+index.md
 '''
         '''
         $ cat 21.md
         '''
-        stdout = '[21](./README.md)\n'
+        stdout = '[21](./index.md)\n'
         result = subprocess.run(["cat", str(NOTES_DIR / "21.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
 
     def test_new_creates_month(self):
         '''
         Running "n new <title>" in a freshly initialized notebook (empty
-        README.md) should create the month calendar as well.
+        index.md) should create the month calendar as well.
 
         $ n init notebook
         $ cd notebook
@@ -126,7 +126,7 @@ README.md
         self.assertEqual(result.stdout, '')
 
         '''
-        $ cat README.md
+        $ cat index.md
         '''
         stdout = '''July
 
@@ -139,13 +139,13 @@ README.md
 | 26 | 27 | 28 | 29 | 30 | 31 |   |
 
 '''
-        result = subprocess.run(["cat", str(notebook_dir / "README.md")], capture_output=True, text=True, check=True)
+        result = subprocess.run(["cat", str(notebook_dir / "index.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
 
         '''
         $ cat 21.md
         '''
-        stdout = '[21](./README.md)\n\n* [lorem](./21/lorem.md)'
+        stdout = '[21](./index.md)\n\n* [lorem](./21/lorem.md)'
         result = subprocess.run(["cat", str(notebook_dir / "21.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
 

@@ -34,7 +34,7 @@ class TestDeleteNote(unittest.TestCase):
 
         The titled note file ("21/test.md") is removed and the link back to it
         is removed from the dated note ("21.md"). The dated note itself and the
-        calendar link in README.md are left untouched.
+        calendar link in index.md are left untouched.
         '''
         env = os.environ.copy()
         env["NOTES_TEST_DATE"] = TEST_DATE
@@ -54,7 +54,7 @@ class TestDeleteNote(unittest.TestCase):
         '''
         result = subprocess.run(["ls", str(NOTES_DIR)], capture_output=True, text=True, check=True)
         stdout = '''21.md
-README.md
+index.md
 '''
         self.assertEqual(result.stdout, stdout)
 
@@ -66,12 +66,12 @@ README.md
         '''
         $ cat 21.md
         '''
-        stdout = '[21](./README.md)\n'
+        stdout = '[21](./index.md)\n'
         result = subprocess.run(["cat", str(NOTES_DIR / "21.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
 
         '''
-        $ cat README.md
+        $ cat index.md
         '''
         stdout = '''July
 
@@ -84,7 +84,7 @@ README.md
 | 26 | 27 | 28 | 29 | 30 | 31 |   |
 
 '''
-        result = subprocess.run(["cat", str(NOTES_DIR / "README.md")], capture_output=True, text=True, check=True)
+        result = subprocess.run(["cat", str(NOTES_DIR / "index.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
 
     def test_delete_day_note(self):
@@ -100,7 +100,7 @@ README.md
         $ note delete
 
         The dated note file ("21.md") is removed and the calendar link in
-        README.md is reverted back to the plain day number.
+        index.md is reverted back to the plain day number.
         '''
         env = os.environ.copy()
         env["NOTES_TEST_DATE"] = TEST_DATE
@@ -119,7 +119,7 @@ README.md
         $ ls
         '''
         result = subprocess.run(["ls", str(NOTES_DIR)], capture_output=True, text=True, check=True)
-        stdout = '''README.md
+        stdout = '''index.md
 '''
         self.assertEqual(result.stdout, stdout)
 
@@ -129,7 +129,7 @@ README.md
         self.assertFalse((NOTES_DIR / "21.md").exists())
 
         '''
-        $ cat README.md
+        $ cat index.md
         '''
         stdout = '''July
 
@@ -142,7 +142,7 @@ README.md
 | 26 | 27 | 28 | 29 | 30 | 31 |   |
 
 '''
-        result = subprocess.run(["cat", str(NOTES_DIR / "README.md")], capture_output=True, text=True, check=True)
+        result = subprocess.run(["cat", str(NOTES_DIR / "index.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
 
 

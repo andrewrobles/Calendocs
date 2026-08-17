@@ -12,7 +12,7 @@ M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ n new "lorem"
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
-$ cat README.md
+$ cat index.md
 ```
 
 ✅
@@ -24,13 +24,13 @@ M345373@R5579333 MINGW64 ~/Projects/n/test (2026-08-15)
 $ cd notebook
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
-$ cat README.md 
+$ cat index.md 
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ n new
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
-$ cat README.md 
+$ cat index.md 
 August
 
 | S | M | T | W | T | F | S |
@@ -52,13 +52,13 @@ M345373@R5579333 MINGW64 ~/Projects/n/test (2026-08-15)
 $ cd notebook/
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
-$ cat README.md 
+$ cat index.md 
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ n new
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
-$ cat README.md 
+$ cat index.md 
 August
 
 | S | M | T | W | T | F | S |

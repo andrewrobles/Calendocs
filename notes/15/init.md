@@ -15,14 +15,14 @@ $ n new
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ ls
-15.md  README.md
+15.md  index.md
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ touch .md
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ ls
-15.md  README.md
+15.md  index.md
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ n clear
@@ -32,7 +32,7 @@ $ n clear
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ cat 15.md
-[15](./README.md)
+[15](./index.md)
 
 Hello, world!
 Hello world!!

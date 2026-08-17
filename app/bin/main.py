@@ -65,7 +65,7 @@ def main():
 
     title = ' '.join(args[1:]).strip()
 
-    readme_path = Path.cwd() / 'README.md'
+    readme_path = Path.cwd() / 'index.md'
     readme_path.write_text(format_month_readme(get_current_date()), encoding='utf-8')
 
     today = get_current_date()
@@ -80,9 +80,9 @@ def main():
         note_path.write_text(f"[{title}](../{day}.md)\n", encoding='utf-8')
 
         slug = title.lower().replace(' ', '-')
-        dated_note_path.write_text(f"[{day}](./README.md)\n\n* [{title}](./{day}/{slug}.md)", encoding='utf-8')
+        dated_note_path.write_text(f"[{day}](./index.md)\n\n* [{title}](./{day}/{slug}.md)", encoding='utf-8')
     else:
-        dated_note_path.write_text(f"[{day}](./README.md)\n", encoding='utf-8')
+        dated_note_path.write_text(f"[{day}](./index.md)\n", encoding='utf-8')
 
     return 0
 

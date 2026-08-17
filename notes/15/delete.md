@@ -19,11 +19,11 @@ $ n delete "lorem"
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ ls
-15.md  README.md
+15.md  index.md
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ cat 15.md
-[15](./README.md)
+[15](./index.md)
 ```
 
 ```bash
@@ -38,7 +38,7 @@ $ note month
 Created month: "August"
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
-$ cat README.md 
+$ cat index.md 
 August
 
 | S | M | T | W | T | F | S |
@@ -55,7 +55,7 @@ M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ note new
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
-$ cat README.md 
+$ cat index.md 
 August
 
 | S | M | T | W | T | F | S |
@@ -70,13 +70,13 @@ August
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ ls
-15.md  README.md
+15.md  index.md
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ n delete
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
-$ cat README.md 
+$ cat index.md 
 August
 
 | S | M | T | W | T | F | S |
@@ -91,5 +91,5 @@ August
 
 M345373@R5579333 MINGW64 ~/Projects/n/test/notebook (2026-08-15)
 $ ls
-README.md
+index.md
 ```

@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const { getCurrentDate } = require('./time')
+const { createDay } = require('./day')
 
 function slugifyTitle(title) {
   return title.toLowerCase().replace(/!+$/, '').replace(/ /g, '-')
@@ -128,6 +129,8 @@ function clearNote() {
   }
 
   const scratchContent = fs.readFileSync(scratchPath, 'utf8')
+
+  createDay()
 
   if (fs.existsSync(datedNotePath)) {
     fs.appendFileSync(datedNotePath, `\n${scratchContent}`)

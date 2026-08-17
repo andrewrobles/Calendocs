@@ -4,10 +4,10 @@ const { createNote } = require('./note')
 describe('note test 1', () => {
 
 let testInputDay = `
-[1/1](./README.md)
+[1/1](./index.md)
 `
 let testOutputDayExpected = `
-[1/1](./README.md)
+[1/1](./index.md)
 
 - [Hello, World!](./01-01/hello,-world.md)
 `

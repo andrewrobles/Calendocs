@@ -55,9 +55,24 @@ class TestClear(unittest.TestCase):
         '''
         $ cat 21.md
         '''
-        stdout = '[21](./README.md)\n\nsome scratch thoughts\nmore thoughts\n'
+        stdout = '[21](./index.md)\n\nsome scratch thoughts\nmore thoughts\n'
         result = subprocess.run(["cat", str(NOTES_DIR / "21.md")], capture_output=True, text=True, check=True)
         self.assertEqual(result.stdout, stdout)
+
+    def test_clear_links_dated_note_in_index(self):
+        env = os.environ.copy()
+        env["NOTES_TEST_DATE"] = TEST_DATE
+
+        scratch = NOTES_DIR / ".md"
+        scratch.write_text("some scratch thoughts\n")
+
+        subprocess.run(["node", str(CLI_PATH), "clear"], cwd=NOTES_DIR, env=env, check=True, capture_output=True, text=True)
+
+        result = subprocess.run(["cat", str(NOTES_DIR / "index.md")], capture_output=True, text=True, check=True)
+        self.assertIn("[21](./21.md)", result.stdout)
+
+        result = subprocess.run(["cat", str(NOTES_DIR / "21.md")], capture_output=True, text=True, check=True)
+        self.assertEqual(result.stdout, "[21](./index.md)\n\nsome scratch thoughts\n")
 
 
 if __name__ == "__main__":

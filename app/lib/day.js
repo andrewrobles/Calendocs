@@ -40,7 +40,7 @@ function createDay(testCalendar = null) {
   const filename = testCalendar === null ? `${day}.md` : `${leadingZeroMonth}-${leadingZeroDay}.md`
   const filepath = path.join(process.cwd(), filename)
 
-  const fileContent = `[${day}](./README.md)\n`
+  const fileContent = `[${day}](./index.md)\n`
   const docLink = `[${today.getDate()}](./${filename})`
 
   const pattern = new RegExp(`(\\|\\s*)${today.getDate()}(\\s*\\|)`)
@@ -52,9 +52,9 @@ function createDay(testCalendar = null) {
       // Create a new dated note
       fs.writeFileSync(filepath, fileContent)
     }
-    const readmeContent = fs.readFileSync(path.join(process.cwd(), 'README.md'), 'utf8')
+    const readmeContent = fs.readFileSync(path.join(process.cwd(), 'index.md'), 'utf8')
     calendar = readmeContent.replace(pattern, `$1${docLink}$2`)
-    fs.writeFileSync(path.join(process.cwd(), 'README.md'), calendar)
+    fs.writeFileSync(path.join(process.cwd(), 'index.md'), calendar)
   } else {
     calendar = testCalendar.replace(pattern, `$1${docLink}$2`)
   }
@@ -78,9 +78,9 @@ const deleteDay = () => {
 
   // delete link from day in calendar
   const docLink = `[${today.getDate()}](./${filename})`
-  const readmeContent = fs.readFileSync(path.join(process.cwd(), 'README.md'), 'utf8')
+  const readmeContent = fs.readFileSync(path.join(process.cwd(), 'index.md'), 'utf8')
   const updatedContent = readmeContent.replace(docLink, `${today.getDate()}`)
-  fs.writeFileSync(path.join(process.cwd(), 'README.md'), updatedContent)
+  fs.writeFileSync(path.join(process.cwd(), 'index.md'), updatedContent)
 }
 
 module.exports = { createDay, deleteDay }

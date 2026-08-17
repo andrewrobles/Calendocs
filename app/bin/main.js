@@ -29,7 +29,7 @@ async function main() {
     if (cmd === 'init') {
       const notesDir = path.join(process.cwd(), subCmd)
       fs.mkdirSync(notesDir, { recursive: true })
-      fs.writeFileSync(path.join(notesDir, 'README.md'), '')
+      fs.writeFileSync(path.join(notesDir, 'index.md'), '')
       process.exit(0)
     }
 
